@@ -104,6 +104,7 @@ class PostController extends Controller
         Toastr::success('Post Successfully Saved :)','Success');
         return redirect()->route('author.post.index');
     }
+    
 
     /**
      * Display the specified resource.
