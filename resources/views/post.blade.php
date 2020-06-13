@@ -11,7 +11,7 @@
         .header-bg{
             height: 400px;
             width: 100%;
-            background-image: url({{ Storage::disk('public')->url('post/'.$post->image) }});
+            background-image: url({{ asset('storage/post/'.$post->image) }});
             background-size: cover;
         }
         .favorite_posts{
@@ -38,7 +38,7 @@
                             <div class="post-info">
 
                                 <div class="left-area">
-                                    <a class="avatar" href="#"><img src="{{ Storage::disk('public')->url('profile/'.$post->user->image) }}" alt="Profile Image"></a>
+                                    <a class="avatar" href="#"><img src="{{ asset('storage/profile/'.$post->user->image) }}" alt="Profile Image"></a>
                                 </div>
 
                                 <div class="middle-area">
@@ -133,9 +133,9 @@
                         <div class="card h-100">
                             <div class="single-post post-style-1">
 
-                                <div class="blog-image"><img src="{{ Storage::disk('public')->url('post/'.$randompost->image) }}" alt="{{ $randompost->title }}"></div>
+                                <div class="blog-image"><img src="{{ asset('storage/post/'.$randompost->image) }}" alt="{{ $randompost->title }}"></div>
 
-                                <a class="avatar" href="#"><img src="{{ Storage::disk('public')->url('profile/'.$randompost->user->image) }}" alt="Profile Image"></a>
+                                <a class="avatar" href="#"><img src="{{ asset('storage/profile/'.$randompost->user->image) }}" alt="Profile Image"></a>
 
                                 <div class="blog-info">
 
@@ -209,7 +209,7 @@
                                     <div class="post-info">
 
                                         <div class="left-area">
-                                            <a class="avatar" href="#"><img src="{{ Storage::disk('public')->url('profile/'.$comment->user->image) }}" alt="Profile Image"></a>
+                                            <a class="avatar" href="#"><img src="{{ asset('storage/profile/'.$comment->user->image) }}" alt="Profile Image"></a>
                                         </div>
 
                                         <div class="middle-area">
