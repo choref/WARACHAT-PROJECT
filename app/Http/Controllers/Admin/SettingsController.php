@@ -42,7 +42,12 @@ class SettingsController extends Controller
             {
                 Storage::disk('public')->delete('profile/'.$user->image);
             }
-            $profile = Image::make($image)->resize(500,500)->save();
+            
+            if(config('app.iswin',false))
+                $profile = Image::make($image)->resize(500,500)->save($image->getClientOriginalExtension());
+            else
+                $profile = Image::make($image)->resize(500,500)->save();
+
             Storage::disk('public')->put('profile/'.$imageName,$profile);
         } else {
             $imageName = $user->image;
