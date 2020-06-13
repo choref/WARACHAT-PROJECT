@@ -70,7 +70,7 @@ class PostController extends Controller
                 Storage::disk('public')->makeDirectory('post');
             }
 
-            $postImage = Image::make($image)->resize(1600,1066)->save();
+            $postImage = Image::make($image)->resize(1600,1066)->save($imageName,90);
             Storage::disk('public')->put('post/'.$imageName,$postImage);
 
         } else {
