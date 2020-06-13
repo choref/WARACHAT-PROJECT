@@ -59,7 +59,15 @@ class CategoryController extends Controller
                 Storage::disk('public')->makeDirectory('category');
             }
 //            resize image for category and upload
+            //$category = Image::make($image)->resize(1600,479)->save();
+
+          
+            if(config('app.iswin',false))
+            $category = Image::make($image)->resize(1600,479)->save($image->getClientOriginalExtension());
+            else
             $category = Image::make($image)->resize(1600,479)->save();
+
+
             Storage::disk('public')->put('category/'.$imagename,$category);
 
             //            check category slider dir is exists
@@ -68,7 +76,13 @@ class CategoryController extends Controller
                 Storage::disk('public')->makeDirectory('category/slider');
             }
             //            resize image for category slider and upload
-            $slider = Image::make($image)->resize(500,333)->save();
+           // $slider = Image::make($image)->resize(500,333)->save();
+
+            if(config('app.iswin',false))
+                $slider = Image::make($image)->resize(500,333)->save($image->getClientOriginalExtension());
+            else
+                $slider = Image::make($image)->resize(500,333)->save();
+
             Storage::disk('public')->put('category/slider/'.$imagename,$slider);
 
         } else {
@@ -141,7 +155,13 @@ class CategoryController extends Controller
                 Storage::disk('public')->delete('category/'.$category->image);
             }
 //            resize image for category and upload
-            $categoryimage = Image::make($image)->resize(1600,479)->save();
+            // $categoryimage = Image::make($image)->resize(1600,479)->save();
+            if(config('app.iswin',false))
+                $categoryimage = Image::make($image)->resize(1600,479)->save($image->getClientOriginalExtension());
+            else
+                $categoryimage = Image::make($image)->resize(1600,479)->save();
+            
+
             Storage::disk('public')->put('category/'.$imagename,$categoryimage);
 
             //            check category slider dir is exists
@@ -155,7 +175,14 @@ class CategoryController extends Controller
                 Storage::disk('public')->delete('category/slider/'.$category->image);
             }
             //            resize image for category slider and upload
+            //$slider = Image::make($image)->resize(500,333)->save();
+
+            if(config('app.iswin',false))
+            $slider = Image::make($image)->resize(500,333)->save($image->getClientOriginalExtension());
+        else
             $slider = Image::make($image)->resize(500,333)->save();
+
+
             Storage::disk('public')->put('category/slider/'.$imagename,$slider);
 
         } else {
